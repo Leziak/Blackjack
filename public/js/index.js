@@ -7,7 +7,7 @@ let cards = [];
 let score = 0;
 let dealerScore, playerScore;
 let count = 0;
-let won = false;
+let won = 0;
 // let bet = 0;
 
 
@@ -26,10 +26,14 @@ $(document).ready(function () {
     }
 
     const settleBet = () => {
-        if (won) {
-            total += 2 * bet;
+        if (won===1) {
+            total += 2 * Number(bet);
+            $('h1').html(`You win ${bet}!`);
+        } else if(won===2){
+            $('h1').html(`It's a tie!`);
+            total += Number(bet);
         } else {
-            total = total;
+            $('h1').html(`You lose ${bet}!`);
         }
         $('.amount').html(total);
         bet = 0;
@@ -37,7 +41,6 @@ $(document).ready(function () {
     }
 
     const start = () => {
-        settleBet();
         bet = 0;
         dealer = [];
         player = [];
@@ -50,18 +53,21 @@ $(document).ready(function () {
         $('h1').html('');
         showCards(dealer, '.dealer');
         showCards(player, '.player');
-
         $('.amount').html(total);
         $('.stand').click(stand);
         $('.draw').click(playerDraw);
-        $('.new-game').click(newGame);
     }
 
     const playerDraw = () => {
         player.push(cards.pop());
         $('#score').html(calc(player));
-        showCards(player, '.player')
+        showCards(player, '.player');
+        if(calc(player)>21) {
+            won===0;
+            settleBet();
+        }
         $('.stand').click(stand);
+        $('.draw').click(playerDraw);
     }
 
     const dealerDraw = () => {
@@ -90,22 +96,22 @@ $(document).ready(function () {
     }
 
     const winLose = () => {
+        if(playerScore===dealerScore || (playerScore>21 && dealerScore>21)) {
+            won = 2;
+            return;
+        }
         if (dealerScore > 21) {
-            $('h1').html('You win!');
-            won = true;
+            won = 1;
             return;
         }
         if (playerScore > 21) {
-            $('h1').html('You lose!');
-            won = false;
+            won = 0;
             return;
         }
         if (dealerScore > playerScore) {
-            $('h1').html('You lose!');
-            won = false;
+            won = 0;
         } else if (playerScore > dealerScore) {
-            $('h1').html('You win!');
-            won = true;
+            won = 1;
         } else {
             $('h1').html('Tie!')
         }
@@ -119,11 +125,10 @@ $(document).ready(function () {
         winLose();
         console.log(playerScore);
         console.log(dealerScore);
-        // start();
+        settleBet();
     }
 
     newGame();
-
-
+    $('.new-game').click(newGame);
 
 });
