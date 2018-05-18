@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +7,43 @@
   <link rel="stylesheet" href="/css/index.css">
   <title>BlackJack</title>
 </head>
-
 <body>
   <div class="main-container">
-    <div class="new-game">
-      <button>New Game</button>
-    </div>
-
-    <div class="dealer">
-      <div class="reverse"></div>
-
-    </div>
-
-    <div class="middle-game">
-
-      <div class="money">Money:</div>
-      <div class="reverse"></div>
-      <div class="bet">Bet:</div>
-
-    </div>
-
-    <div class="player column">
-      <div class="row space-b">
-        <div>
-          <button class="draw row">Draw</button>
-        </div>
-        <div>
-          <button class="stand row">Stand</button>
-        </div>
-      </div>
-
-      <span class="player-score">Score: 0</span>
-
-
-
-
-    </div>
+   <div class="new-game">  
+    <button>New Game</button>
   </div>
 
+  <div class="dealer">
+    <div class="reverse"></div>
+
+  </div>
+
+  <div class="middle-game">
+
+    <div class="money">Money:<br><span class="amount">1000</span></div>
+    <div class="message">
+        <h1></h1>
+    </div>
+    <div class="bet">Bet<br><span class="amount-bet"></span></div>
+
+  </div>
+
+  <div class="player">
+
+   <button class="draw">Draw</button>
+   <div class="player-score">Score:<span id="score">0</span></div>
+   <button class="stand">Stand</button>
+
+  </div>
+</div>
 
 
 
 
+
+  
   <script src="/js/jquery-3.3.1.min.js"></script>
   <script src="/js/cards.js"></script>
   <script src="/js/index.js"></script>
 </body>
-
 </html>

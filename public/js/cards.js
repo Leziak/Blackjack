@@ -13,13 +13,14 @@ function randint(max) {
 /* 
  * Randomly suffles an array of any values.
  */
-function shuffle_array(array) {
+function shuffleArray(array) {
   for(let max = array.length - 1; max > 1; max--) {
     let index = randint(max);
     let value = array[index];
     array[index] = array[max]
     array[max] = value;
   }
+  return array;
 }
 
 /* 
@@ -34,7 +35,7 @@ function Card(suit, rank) {
 /* 
  * Generates an array of 52 playing cards.
  */
-function generate_cards() {
+function generateCards() {
   let result = [];
   SUITS.forEach(function(suit) {
     RANKS.forEach(function(rank) {
@@ -44,4 +45,6 @@ function generate_cards() {
 
   return result;
 }
+
+
 
