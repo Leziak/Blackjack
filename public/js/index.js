@@ -14,8 +14,21 @@ let won = 0;
 $(document).ready(function () {
 
     const newGame = () => {
+        total = 1000;
         start();
         setTimeout(betHandler, 100);
+        $('.continue').prop('disabled', true)
+    }
+
+    const next = () => {
+        start();
+        setTimeout(betHandler, 100);
+        $('.continue').prop('disabled', true)
+    }
+
+    const loseHandler = () => {
+        $('h1').html(`You're broke!`);
+        setTimeout(newGame, 2000);
     }
 
     const betHandler = () => {
@@ -26,21 +39,24 @@ $(document).ready(function () {
     }
 
     const settleBet = () => {
-        if (won===1) {
-            total += 2 * Number(bet);
-            $('h1').html(`You win ${bet}!`);
-        } else if(won===2){
-            $('h1').html(`It's a tie!`);
+        if (won === 1) {
             total += Number(bet);
+            $('h1').html(`You win ${bet}!`);
+        } else if (won === 2) {
+            $('h1').html(`It's a tie!`);
         } else {
             $('h1').html(`You lose ${bet}!`);
+            if(total<=0) {
+                $('h1').html(`You're broke'`);
+            }
         }
         $('.amount').html(total);
-        bet = 0;
         $('.amount-bet').html(bet);
     }
 
     const start = () => {
+        $('.stand').prop('disabled', false);
+        $('.draw').prop('disabled', false);
         bet = 0;
         dealer = [];
         player = [];
@@ -55,19 +71,20 @@ $(document).ready(function () {
         showCards(player, '.player');
         $('.amount').html(total);
         $('.stand').click(stand);
-        $('.draw').click(playerDraw);
     }
 
     const playerDraw = () => {
         player.push(cards.pop());
         $('#score').html(calc(player));
         showCards(player, '.player');
-        if(calc(player)>21) {
-            won===0;
+        if (calc(player) > 21) {
+            won = 0;
             settleBet();
+            $('.stand').prop('disabled', true);
+            $('.draw').prop('disabled', true);
+            $('.continue').prop('disabled', false);            
         }
         $('.stand').click(stand);
-        $('.draw').click(playerDraw);
     }
 
     const dealerDraw = () => {
@@ -96,16 +113,16 @@ $(document).ready(function () {
     }
 
     const winLose = () => {
-        if(playerScore===dealerScore || (playerScore>21 && dealerScore>21)) {
+        if (playerScore === dealerScore) {
             won = 2;
-            return;
-        }
-        if (dealerScore > 21) {
-            won = 1;
             return;
         }
         if (playerScore > 21) {
             won = 0;
+            return;
+        }
+        if (dealerScore > 21) {
+            won = 1;
             return;
         }
         if (dealerScore > playerScore) {
@@ -123,12 +140,14 @@ $(document).ready(function () {
         playerScore = calc(player);
         dealerDraw();
         winLose();
-        console.log(playerScore);
-        console.log(dealerScore);
         settleBet();
+        $('.stand').prop('disabled', true);
+        $('.draw').prop('disabled', true);
+        $('.continue').prop('disabled', false);        
     }
 
     newGame();
-    $('.new-game').click(newGame);
-
+    $('.restart').click(newGame);
+    $('.continue').click(next);
+    $('.draw').click(playerDraw);
 });
