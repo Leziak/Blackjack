@@ -9,21 +9,56 @@
     border: 1px solid black;
     margin:auto;
     margin-top:20px;
-
 }
 
-.main-container.new-game{
+.new-game{
     display:flex;
-    width: 30px;
+    width: 100%;
+    justify-content: center;
+    /*background-color:green;*/
+    flex-direction:row;
+    padding:1rem;
+    button {
+        width:150px;
+        padding:0.5rem;
+        font-size:1rem;
+        font-weight: bold;
+    }
 }
 
 .dealer{
     display:flex;
-    flex:nowrap;
+    flex:column;
+    border:1px solid black;
+    width:100%;
+    height:20vh;
+    margin-top:1rem;
+    margin-bottom: 1rem;
 }
 
 .middle-game{
     display:flex;
+    justify-content: space-around;
+    min-height:30vh;
+    width:100%;
+    border:1px solid black;
+    .money {
+        width:150px;
+        padding:0.5rem;
+        font-size:1rem;
+        font-weight: bold;
+        margin-left:1rem;
+    }
+
+    .bet {
+        width:100px;
+        padding:0.5rem;
+        font-size:1rem;
+        font-weight: bold;
+        margin-right:1rem;
+    }
+
+
 }
 
 .player{
