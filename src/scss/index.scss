@@ -1,3 +1,31 @@
 @import "normalize";
 @import "cards";
 
+.main-container{
+    display: flex;
+    flex-direction: column;
+    width:960px;
+    height:90vh;
+    border: 1px solid black;
+    margin:auto;
+    margin-top:20px;
+
+}
+
+.main-container.new-game{
+    display:flex;
+    width: 30px;
+}
+
+.dealer{
+    display:flex;
+    flex:nowrap;
+}
+
+.middle-game{
+    display:flex;
+}
+
+.player{
+    display:flex;
+}
