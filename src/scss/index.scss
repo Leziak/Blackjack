@@ -1,105 +1,68 @@
 @import "normalize";
 @import "cards";
-.main-container {
+
+.main-container{
     display: flex;
     flex-direction: column;
-    width: 960px;
-    height: 90vh;
+    width:960px;
+    height:90vh;
     border: 1px solid black;
-    margin: auto;
-    margin-top: 20px;
+    margin:auto;
+    margin-top:20px;
 }
 
-.new-game {
-    display: flex;
+.new-game{
+    display:flex;
     width: 100%;
     justify-content: center;
     /*background-color:green;*/
-    flex-direction: row;
-    padding: 1rem;
+    flex-direction:row;
+    padding:1rem;
     button {
-        width: 150px;
-        padding: 0.5rem;
-        font-size: 1rem;
+        width:150px;
+        padding:0.5rem;
+        font-size:1rem;
         font-weight: bold;
     }
 }
 
-.dealer {
-    display: flex;
-    flex: column;
-    border: 1px solid black;
-    width: 100%;
-    height: 20vh;
-    margin-top: 1rem;
+.dealer{
+    display:flex;
+    flex:column;
+    border:1px solid black;
+    width:100%;
+    height:20vh;
+    margin-top:1rem;
     margin-bottom: 1rem;
 }
 
-.middle-game {
-    display: flex;
+.middle-game{
+    display:flex;
     justify-content: space-around;
-    min-height: 30vh;
-    width: 100%;
-    border: 1px solid black;
+    min-height:30vh;
+    width:100%;
+    border:1px solid black;
     .money {
-        width: 150px;
-        padding: 0.5rem;
-        font-size: 1rem;
+        width:150px;
+        padding:0.5rem;
+        font-size:1rem;
         font-weight: bold;
-        margin-left: 1rem;
+        margin-left:1rem;
     }
+
     .bet {
-        width: 100px;
-        padding: 0.5rem;
-        font-size: 1rem;
+        width:100px;
+        padding:0.5rem;
+        font-size:1rem;
         font-weight: bold;
-        margin-right: 1rem;
+        margin-right:1rem;
     }
+
+
 }
 
-.player {
-    box-sizing: border-box;
-    width: 100%;
-    justify-content: space-around;
-    padding: 1rem;
-    .draw {
-        width: 150px;
-        padding: 0.5rem;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-    .stand {
-        width: 150px;
-        padding: 0.5rem;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-    // .player-score{
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: flex-end;
-    // }
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.space-b {
-    justify-content: space-between;
-}
-
-.player-score{
-    display: block;
-    margin-top:6rem;
-    text-align:center;
+.player{
+    display:flex;
 }
 
 .card {
